@@ -139,24 +139,25 @@
 
     <script>
         async function fetchCryptoNews() {
-            try {
-                const response = await fetch('https://newsapi.org/v2/everything?q=crypto&apiKey=5c00ae6c3c3b4431bbf1725846731545');
-                const data = await response.json();
+    try {
+        const response = await fetch('https://newsapi.org/v2/everything?q=crypto&apiKey=5c00ae6c3c3b4431bbf1725846731545');
+        const data = await response.json();
 
-                // Populate the News Section
-                const newsList = document.getElementById('news-list');
-                newsList.innerHTML = data.articles.slice(0, 5).map(article => 
-                    `<li><a href="${article.url}" target="_blank">${article.title}</a></li>`
-                ).join('');
-            } catch (error) {
-                console.error("Errorfetching crypto news:", error);
-            }
-        }
+        // Populate the News Section
+        const newsList = document.getElementById('news-list');
+        newsList.innerHTML = data.articles.slice(0, 5).map(article => 
+            `<li><a href="${article.url}" target="_blank">${article.title}</a></li>`
+        ).join('');
+    } catch (error) {
+        console.error("Error fetching crypto news:", error);
+    }
+}
 
-        // Fetch crypto news on page load
-        window.onload = () => {
-            fetchCryptoNews();
-        };
+// Fetch crypto news on page load
+window.onload = () => {
+    fetchCryptoNews();
+};
+
     </script>
 </body>
 </html>
